@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns
+﻿namespace DesignPatterns.BehavioralPatterns
 {
     // Each handler either handles the request or passes it to the next handler in the chain. 
 
@@ -106,7 +106,7 @@
 
     class TestCOFPattern
     {
-        public static void Test()
+        public static void Run()
         {
             var monkey = new MonkeyHandler();
             var squirrel = new SquirrelHandler();

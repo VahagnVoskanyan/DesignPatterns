@@ -1,11 +1,26 @@
-﻿using DesignPatterns;
+﻿using DesignPatterns.BehavioralPatterns;
+using DesignPatterns.StructuraclPatters;
 
-TestProxyPattern.Test();
+Console.WriteLine("Proxy Pattern \n");
 
-Console.WriteLine();
+TestProxyPattern.Run();
 
-TestCOFPattern.Test();
+Console.WriteLine("Chain of responsibility Pattern \n");
 
-Console.WriteLine();
+TestCOFPattern.Run();
 
-TestCommandPattern.Test();
+Console.WriteLine("Command Pattern \n");
+
+TestCommandPattern.Run();
+
+Console.WriteLine("Iterator Pattern \n");
+
+TestIteratorPattern.Run();
+
+Console.WriteLine("Adapter Pattern \n");
+
+TestAdapterPattern.Run();
+
+Console.WriteLine("Bridge Pattern \n");
+
+TestBridgePattern.Run();

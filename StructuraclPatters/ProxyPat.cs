@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns
+﻿namespace DesignPatterns.StructuraclPatters
 {
     // Doing tasks before and/or after forwarding the request to the RealSubject
 
@@ -63,7 +63,7 @@
 
     public class TestProxyPattern
     {
-        public static void Test()
+        public static void Run()
         {
             ProxyClient client = new();
 

@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns
+﻿namespace DesignPatterns.BehavioralPatterns
 {
     // Addintional layer before BLL
 
@@ -105,7 +105,7 @@
 
     class TestCommandPattern
     {
-        public static void Test()
+        public static void Run()
         {
             // The client code can parameterize an invoker with any commands.
             Invoker invoker = new();

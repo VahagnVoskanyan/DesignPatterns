@@ -1,99 +1,119 @@
 ﻿namespace DesignPatterns.CreationalPatterns
 {
     // The Creator class declares the factory method that is supposed to return
-    // an object of a Product class. The Creator's subclasses usually provide
+    // an object of a Transport class. The Creator's subclasses usually provide
     // the implementation of this method.
     abstract class Creator
     {
-        // Note that the Creator may also provide some default implementation of
+        // The Creator may also provide some default implementation of
         // the factory method.
-        public abstract IProduct FactoryMethod();
+        public abstract ITransport FactoryMethod();
 
-        // Also note that, despite its name, the Creator's primary
-        // responsibility is not creating products. Usually, it contains some
-        // core business logic that relies on Product objects, returned by the
-        // factory method. Subclasses can indirectly change that business logic
+        // The Creator's primary responsibility is not creating transports.
+        // Usually, it contains some core business logic that relies on Transport objects,
+        // returned by the factory method. Subclasses can indirectly change that business logic
         // by overriding the factory method and returning a different type of
         // product from it.
-        public string SomeOperation()
+        public string DoPrimaryServiceBefore()
         {
-            // Call the factory method to create a Product object.
-            var product = FactoryMethod();
-            // Now, use the product.
+            // Calling the factory method to create a Transport object.
+            var someTransport = FactoryMethod();
+
+            Console.WriteLine("Always doing some service before travel");
+
+            // Some operation logic that depends on what Transport object
+            // the factory method have returned.
             var result = "Creator: The same creator's code has just worked with "
-                + product.Operation();
+                + someTransport.TravelsOn();
 
             return result;
         }
     }
 
-    // Concrete Creators override the factory method in order to change the
-    // resulting product's type.
-    class ConcreteCreator1 : Creator
+    // Concrete Creators override the factory method and
+    // return an instance of a concrete Transport class.
+    class TruckCreator : Creator
     {
-        // Note that the signature of the method still uses the abstract product
-        // type, even though the concrete product is actually returned from the
-        // method. This way the Creator can stay independent of concrete product
-        // classes.
-        public override IProduct FactoryMethod()
+        // The signature of the method still uses the abstract transport type.
+        // This way the Creator can stay independent of concrete transport classes.
+        public override ITransport FactoryMethod()
         {
-            return new ConcreteProduct1();
+            return new TruckTransport();
         }
     }
 
-    class ConcreteCreator2 : Creator
+    class ShipCreator : Creator
     {
-        public override IProduct FactoryMethod()
+        public override ITransport FactoryMethod()
         {
-            return new ConcreteProduct2();
+            return new ShipTransport();
         }
     }
 
-    // The Product interface declares the operations that all concrete products
-    // must implement.
-    public interface IProduct
+    // The Transport interface declares the operations that all
+    // transports must do.
+    public interface ITransport
     {
-        string Operation();
+        string TravelsOn();
     }
 
-    // Concrete Products provide various implementations of the Product
-    // interface.
-    class ConcreteProduct1 : IProduct
+    // Concrete Transport travels on concrete ways.
+    class TruckTransport : ITransport
     {
-        public string Operation()
+        public string TravelsOn()
         {
-            return "{Result of ConcreteProduct1}";
+            return "'Truck travels on road'";
         }
     }
 
-    class ConcreteProduct2 : IProduct
+    class ShipTransport : ITransport
     {
-        public string Operation()
+        public string TravelsOn()
         {
-            return "{Result of ConcreteProduct2}";
+            return "'Ship travels on water'";
         }
     }
 
-    class Client
+    class FactoryPatClient
     {
-        public void Main()
+        public static void Main()
         {
+            // No core business logic in ITransport usage
+            Console.WriteLine("Using only ITransport Interface");
+            UsingOnlyITransport(new TruckTransport());
+            Console.WriteLine();
+            UsingOnlyITransport(new ShipTransport());
+            Console.WriteLine("--");
+
             Console.WriteLine("App: Launched with the ConcreteCreator1.");
-            ClientCode(new ConcreteCreator1());
+            ClientCode(new TruckCreator());
 
             Console.WriteLine("");
 
             Console.WriteLine("App: Launched with the ConcreteCreator2.");
-            ClientCode(new ConcreteCreator2());
+            ClientCode(new ShipCreator());
+        }
+
+        public static void UsingOnlyITransport(ITransport transport)
+        {
+            Console.WriteLine(transport.TravelsOn());
         }
 
         // The client argument is the base abstract 'Creator' class.
-        public void ClientCode(Creator creator)
+        public static void ClientCode(Creator creator)
         {
             // ...
             Console.WriteLine("Client: I'm not aware of the creator's class," +
-                "but it still works.\n" + creator.SomeOperation());
+                "but it still works.\n" + creator.DoPrimaryServiceBefore());
             // ...
+        }
+    }
+
+    class TestFactoryMethodPat
+    {
+        public static void Run()
+        {
+            FactoryPatClient.Main();
         }
     }
 }

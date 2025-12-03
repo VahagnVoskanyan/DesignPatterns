@@ -33,3 +33,7 @@ TestFactoryMethodPat.Run();
 Console.WriteLine("\n--> Abstract Factory Method Pattern \n");
 
 TestAbsFactoryMethodPat.Run();
+
+Console.WriteLine("\n--> Builder Pattern \n");
+
+TestBuilderPat.Run();

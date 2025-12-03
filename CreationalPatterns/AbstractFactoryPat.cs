@@ -145,7 +145,7 @@
         }
     }
 
-    class TestAbsFactoryMethodPat
+    static class TestAbsFactoryMethodPat
     {
         public static void Run()
         {

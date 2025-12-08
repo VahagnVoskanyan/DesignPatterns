@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.StructuraclPatters
+﻿namespace DesignPatterns.StructuralPatters
 {
     // Doing tasks before and/or after forwarding the request to the RealSubject
 
@@ -38,7 +38,7 @@
             }
         }
 
-        public bool CheckAccess()
+        public bool CheckAccess() // Before
         {
             // Some real checks should go here.
             Console.WriteLine("Proxy: Checking access prior to firing a real request.");
@@ -46,7 +46,7 @@
             return true;
         }
 
-        public void LogAccess()
+        public void LogAccess() // After
         {
             Console.WriteLine("Proxy: Logging the time of request. " + DateTime.Now);
         }

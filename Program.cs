@@ -1,6 +1,6 @@
 ﻿using DesignPatterns.BehavioralPatterns;
 using DesignPatterns.CreationalPatterns;
-using DesignPatterns.StructuraclPatters;
+using DesignPatterns.StructuralPatters;
 
 Console.WriteLine("\n--> Proxy Pattern \n");
 
@@ -45,3 +45,7 @@ TestPrototypePat.Run();
 Console.WriteLine("\n--> Singleton Pattern \n");
 
 TestSingletonPat.Run();
+
+Console.WriteLine("\n--> Composite Pattern \n");
+
+TestCompositePat.Run();

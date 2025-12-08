@@ -1,4 +1,4 @@
-﻿namespace DesignPatterns.StructuraclPatters
+﻿namespace DesignPatterns.StructuralPatters
 {
     class Shape
     {

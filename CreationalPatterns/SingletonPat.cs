@@ -69,7 +69,7 @@
 
         public static void TestSingleton(string value)
         {
-            Thread.Sleep(1000); // Simulate some work
+            //Thread.Sleep(1000); // Simulate some work
 
             Singleton singleton = Singleton.GetInstance(value);
             Console.WriteLine(singleton.Value);

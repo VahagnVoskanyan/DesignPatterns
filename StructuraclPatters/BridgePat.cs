@@ -1,57 +1,71 @@
 ﻿namespace DesignPatterns.StructuraclPatters
 {
-    class Abstraction
+    class Shape
     {
-        protected IImplementation _implementation;
+        protected IColor _implementation;
 
-        public Abstraction(IImplementation implementation)
+        public Shape(IColor implementation)
         {
             _implementation = implementation;
         }
 
-        public virtual string Operation()
+        public virtual string BuildObjectOperation()
         {
-            return "Abstract: Base operation with:\n" +
-                _implementation.OperationImplementation();
+            return "Shape: Base operation with:\n" +
+                _implementation.PaintOparation();
         }
     }
 
     // Extending abstraction without changing the Implementation classes
-    class ExtendedAbstraction : Abstraction
+    class CicleShape : Shape
     {
-        public ExtendedAbstraction(IImplementation implementation) : base(implementation)
+        public CicleShape(IColor implementation) : base(implementation)
         {
         }
 
-        public override string Operation()
+        public override string BuildObjectOperation()
         {
-            return "ExtendedAbstraction: Extended operation with:\n" +
-                _implementation.OperationImplementation();
+            return "CicleShape: Cicle (Extended) operation with:\n" +
+                _implementation.PaintOparation();
+        }
+    }
+
+    class SquareShape : Shape
+    {
+        public SquareShape(IColor implementation) : base(implementation)
+        {
+        }
+
+        public override string BuildObjectOperation()
+        {
+            return "SquareShape: Square (Extended) operation with:\n" +
+                _implementation.PaintOparation();
         }
     }
 
     // Defines the interface for all implementation classes.
     // Provides only primitive operations, while the Abstraction
     // defines higher- level operations based on those primitives.
-    public interface IImplementation
+    public interface IColor
     {
-        string OperationImplementation();
+        string PaintOparation();
     }
 
     // Two different implementations
-    class ConcreteImplementationA : IImplementation
+    class RedColor : IColor
     {
-        public string OperationImplementation()
+        public string PaintOparation()
         {
-            return "ConcreteImplementationA: The result in platform A.\n";
+            //return "ConcreteImplementationA: The result in platform A.\n";
+            return "RedColor: Paints Red (platform A).\n";
         }
     }
 
-    class ConcreteImplementationB : IImplementation
+    class BlueColor : IColor
     {
-        public string OperationImplementation()
+        public string PaintOparation()
         {
-            return "ConcreteImplementationB: The result in platform B.\n";
+            return "BlueColor: Paints Blue (platform B).\n";
         }
     }
 
@@ -59,9 +73,9 @@
     {
         // Client code only depend on the Abstraction class. This way the client code can
         // support any abstraction-implementation combination.
-        public void ClientCode(Abstraction abstraction)
+        public void ClientCode(Shape shape)
         {
-            Console.Write(abstraction.Operation());
+            Console.Write(shape.BuildObjectOperation());
         }
     }
 
@@ -71,16 +85,26 @@
         {
             Client client = new();
 
-            Abstraction abstraction;
+            Shape shape;
             // The client code should be able to work with any pre-configured
             // abstraction-implementation combination.
-            abstraction = new Abstraction(new ConcreteImplementationA());
-            client.ClientCode(abstraction);
+            shape = new Shape(new RedColor());
+            client.ClientCode(shape);
 
             Console.WriteLine();
 
-            abstraction = new ExtendedAbstraction(new ConcreteImplementationB());
-            client.ClientCode(abstraction);
+            shape = new CicleShape(new BlueColor());
+            client.ClientCode(shape);
+
+            Console.WriteLine();
+
+            shape = new CicleShape(new RedColor());
+            client.ClientCode(shape);
+
+            Console.WriteLine();
+
+            shape = new SquareShape(new BlueColor());
+            client.ClientCode(shape);
         }
     }
 }

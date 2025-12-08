@@ -37,3 +37,11 @@ TestAbsFactoryMethodPat.Run();
 Console.WriteLine("\n--> Builder Pattern \n");
 
 TestBuilderPat.Run();
+
+Console.WriteLine("\n--> Prototype Pattern \n");
+
+TestPrototypePat.Run();
+
+Console.WriteLine("\n--> Singleton Pattern \n");
+
+TestSingletonPat.Run();

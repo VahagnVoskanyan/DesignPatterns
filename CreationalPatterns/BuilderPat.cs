@@ -69,7 +69,7 @@
 
         public void BuildDoors()
         {
-            
+            _house.Add("Stone Doors");
         }
 
         public void BuildRoof()

@@ -69,7 +69,7 @@
         }
     }
 
-    class Client
+    class BridgeClient
     {
         // Client code only depend on the Abstraction class. This way the client code can
         // support any abstraction-implementation combination.
@@ -83,7 +83,7 @@
     {
         public static void Run()
         {
-            Client client = new();
+            BridgeClient client = new();
 
             Shape shape;
             // The client code should be able to work with any pre-configured

@@ -49,3 +49,12 @@ TestSingletonPat.Run();
 Console.WriteLine("\n--> Composite Pattern \n");
 
 TestCompositePat.Run();
+
+Console.WriteLine("\n--> Decorator Pattern \n");
+
+TestDecoratorPat.Run();
+
+
+Console.WriteLine("\n--> Facade Pattern \n");
+
+TestFacadePat.Run();

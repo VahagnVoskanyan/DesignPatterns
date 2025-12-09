@@ -74,7 +74,7 @@
         }
     }
 
-    class FactoryPatClient
+    class FactoryClient
     {
         public static void Main()
         {
@@ -113,7 +113,7 @@
     {
         public static void Run()
         {
-            FactoryPatClient.Main();
+            FactoryClient.Main();
         }
     }
 }
